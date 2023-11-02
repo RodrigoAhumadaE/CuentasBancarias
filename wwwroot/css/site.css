@@ -64,3 +64,21 @@ form{
   display: flex;
   justify-content: flex-end;
 }
+
+.saldo{
+  display: flex;
+  gap: 5px;
+}
+
+.rojo{
+  color: red;
+}
+
+.verde{
+  color: #48cf48;
+}
+
+.trans{
+  width: 40%;
+  min-width: 400px;
+}

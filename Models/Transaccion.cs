@@ -7,6 +7,7 @@ public class Transaccion{
     [Key]
     public int TransID {set;get;}
 
+    [Required(ErrorMessage = "Debe ingresar una cantidad.")]
     public double Cantidad {set;get;}
 
     public DateTime FechaCreacion {set;get;} = DateTime.Now;

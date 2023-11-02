@@ -1,39 +1,56 @@
 @{
     ViewData["Title"] = "Detalle cuenta";
 }
-@model List<Transaccion>
+@model Transaccion
 
 @await Html.PartialAsync("_Navbar")
 <div class="detalle">
     <div class="titulo">
         <h2>Bienvenido @Context.Session.GetString("Nombre")</h2>
     </div>
-    <div class="saldo">
-        <h3>Saldo actual: @Context.Session.GetInt32("Saldo")</h3>
+    @if(@Context.Session.GetInt32("Saldo") == 0){
+        <div class="saldo rojo">
+            <h3>Saldo actual: $</h3>
+            <h3 id="monto">@Context.Session.GetInt32("Saldo")</h3>
+        </div>
+    }else{
+        <div class="saldo verde">
+            <h3>Saldo actual: $</h3>
+            <h3 id="monto">@Context.Session.GetInt32("Saldo")</h3>
+        </div>
+    }    
+    <div class="movimiento">
+        <form asp-controller="Home" asp-action="ProcesaMovimiento">
+            <div class="cantidad">
+                <label asp-for="Cantidad">Deposito/Retiro: $</label>
+                <input type="number" asp-for="Cantidad">
+                <input type="hidden" asp-for="UsuarioId" value="@Context.Session.GetInt32("Id")">
+                <button class="btn btn-primary">Realizar</button>
+            </div>
+            <span asp-validation-for="Cantidad"></span>
+        </form>
     </div>
     <div class="trans">
-        @if(@Model == null){
-            <table>
+        <h4>Historial Transacciones</h4>
+        @if(@ViewBag.trans == null){
+            <p>No hay transacciones</p>
+        }else{
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Cantidad</th>
-                        <th>Fecha</th>
+                       <th>Cantidad</th>
+                       <th>Fecha</th> 
                     </tr>
                 </thead>
                 <tbody>
-                
-                    <h4>Sin transacciones</h4>
-        }else{
-                    @foreach(Transaccion trans in @Model){
+                    @foreach(Transaccion trans in @ViewBag.trans){
                         <tr>
                             <td>@trans.Cantidad</td>
-                        </tr>
-                        <tr>
                             <td>@trans.FechaCreacion</td>
                         </tr>
                     }
-                </tbody>            
-            </table>        
+                </tbody>
+            </table>
         }
     </div>
 </div>
