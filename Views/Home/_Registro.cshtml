@@ -1,0 +1,52 @@
+@model Usuario
+<h2>Registro</h2>
+<form asp-controller="Home" asp-action="ProcesaRegistro">
+    <div class="item">
+        <div class="input">
+            <label asp-for="Nombre">Nombre: </label>
+            <input type="text" asp-for="Nombre">
+        </div>
+        <div class="mensaje">
+            <span asp-validation-for="Nombre"></span>
+        </div>   
+    </div>
+    <div class="item">
+        <div class="input">
+            <label asp-for="Apellido">Apellido: </label>
+            <input type="text" asp-for="Apellido">
+        </div>
+        <div class="mensaje">
+            <span asp-validation-for="Apellido"></span>
+        </div>
+    </div>
+    <div class="item">
+        <div class="input">
+            <label asp-for="Email">Email: </label>
+            <input type="email" asp-for="Email">
+        </div>
+        <div class="mensaje">
+            <span asp-validation-for="Email"></span>
+        </div>
+    </div>
+    <div class="item">
+        <div class="input">
+            <label asp-for="Password">Password: </label>
+            <input type="password" asp-for="Password">
+        </div>
+        <div class="mensaje">
+            <span asp-validation-for="Password"></span>
+        </div>        
+    </div>
+    <div class="item">
+        <div class="input">
+            <label asp-for="PassConfirm">Confirma Password: </label>
+            <input type="password" asp-for="PassConfirm">
+        </div>
+        <div class="mensaje">
+            <span asp-validation-for="PassConfirm"></span>
+        </div>        
+    </div>
+    <div class="boton">
+        <button class="btn btn-primary">Registrarse</button>
+    </div>
+</form>

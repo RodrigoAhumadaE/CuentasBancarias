@@ -1,0 +1,66 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* agregado */
+
+.contenido{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.registro, .login{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.item{
+  display: flex;
+  flex-direction: column;
+}
+
+.input{
+  display: flex;
+}
+
+.input label{
+  flex: 1;
+}
+
+.input input{
+  flex: 2;
+}
+
+.mensaje{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout{
+  display: flex;
+  justify-content: flex-end;
+}
